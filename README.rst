@@ -84,4 +84,4 @@ The following code creates a 2-neuron CTRNN sinusoidal oscillator::
         plt.ylabel('Neuron outputs')
         plt.show()
 
-.. image:: https://github.com/madvn/CTRNN/CTRNN/osc.png 
+.. image:: https://raw.githubusercontent.com/madvn/CTRNN/master/osc.png
