@@ -2,6 +2,8 @@ CTRNN
 =========================
 Python package that implements Continuous Time Recurrent Neural Networks (CTRNNs)
 
+See Beer, R.D. (1995). On the dynamics of small continuous-time recurrent neural networks. Adaptive Behavior 3:469-509. for a study of CTRNNs. This implementation was inspired by the C implementation at http://mypage.iu.edu/~rdbeer/Software/EvolutionaryAgents/CTRNNDoc.pdf
+
 Installation instructions
 -------------------------
         $ pip install CTRNN
