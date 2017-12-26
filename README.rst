@@ -6,7 +6,7 @@ Installation instructions
 -------------------------
         $ pip install CTRNN
 
--------------------------
+
 
 Usage
 -----
