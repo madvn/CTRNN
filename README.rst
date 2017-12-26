@@ -83,5 +83,7 @@ The following code creates a 2-neuron CTRNN sinusoidal oscillator::
         plt.xlabel('Time')
         plt.ylabel('Neuron outputs')
         plt.show()
+
 Output
+
 .. image:: https://raw.githubusercontent.com/madvn/CTRNN/master/osc.png
