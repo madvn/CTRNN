@@ -53,7 +53,7 @@ The following code creates a 2-neuron CTRNN sinusoidal oscillator::
         import numpy as np
         import matplotlib.pyplot as plt
         # importing the CTRNN class
-        from CTRNN import *
+        from CTRNN import CTRNN
 
         # params
         run_duration = 250
