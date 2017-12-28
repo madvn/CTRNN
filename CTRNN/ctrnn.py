@@ -8,6 +8,7 @@ class CTRNN:
         Constructer that initializes a random network
         with unit time-constants and biases
         args = size:integer = network size
+               step_size = Euler integration step size
         '''
         self.size = size
         self.step_size = step_size
