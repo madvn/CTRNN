@@ -1,4 +1,4 @@
-from setuptools import setup, find_packages
+from setuptools import setup
 
 
 with open('README.rst') as f:
@@ -9,14 +9,13 @@ with open('LICENSE') as f:
 
 setup(
     name='CTRNN',
-    version='0.1.0',
+    version='1.0',
     description='A package that implements Continuous Time Recurrent Neural Networks',
     long_description=readme,
     author='Madhavun Candadai',
     author_email='madvncv@gmail.com',
-    url='https://github.com/madvn',
+    url='https://github.com/madvn/CTRNN',
     license=license,
-    packages=find_packages(),
-    install_requires=['numpy'],
-    scripts=['ctrnn.py']
+    packages=['CTRNN'],
+    install_requires=['numpy','scipy']
 )
