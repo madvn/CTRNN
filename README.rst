@@ -76,7 +76,7 @@ The following code creates a 2-neuron CTRNN sinusoidal oscillator::
         outputs = []
         for _ in range(int(run_duration/step_size)):
             network.euler_step([0]*net_size) # zero external_inputs
-            outputs.append([network.outputs[i] for i in range(cns_size)])
+            outputs.append([network.outputs[i] for i in range(net_size)])
         outputs = np.asarray(outputs)
 
         # plot oscillator output
