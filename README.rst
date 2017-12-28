@@ -19,6 +19,7 @@ The CTRNN class has the following functions::
          |      Constructer that initializes a random network
          |      with unit time-constants and biases
          |      args = size:integer = network size
+         |             step_size:float = euler integration step size
          |
          |  euler_step(self, external_inputs)
          |      Euler stepping the network by self.step_size with provided inputs
