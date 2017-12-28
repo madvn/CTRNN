@@ -129,6 +129,3 @@ class CTRNN:
         '''
         return np.log(o/(1-o))
 
-#CTRNN = CTRNN()
-if __name__ == "__main__":
-    print('CTRNN python package.')
