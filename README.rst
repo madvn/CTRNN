@@ -6,7 +6,7 @@ See Beer, R.D. (1995). On the dynamics of small continuous-time recurrent neural
 
 Installation instructions
 -------------------------
-        $ pip install CTRNN (not availalble yet)
+        $ pip install CTRNN
 
 
 
