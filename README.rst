@@ -45,6 +45,11 @@ The CTRNN class has the following functions::
          |      args = s:array of any Size
          |      output = sigmoid(s):array of same size as input
 
+Notes
+-------
+- Weights are implemented as a scipy.sparse.csr_matrix
+- Notation for weights are CTRNN.weights[to,from] 
+
 Example
 -------
 
