@@ -49,6 +49,7 @@ Notes
 -------
 - Weights are implemented as a scipy.sparse.csr_matrix
 - Notation for weights are CTRNN.weights[to,from] 
+- When creating a CTRNN object, weights are randomly initialized and gains, biases and time-constants are all set to 1
 
 Example
 -------
