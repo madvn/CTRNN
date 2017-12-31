@@ -54,7 +54,7 @@ Notes
 Example
 -------
 
-The following code creates a 2-neuron CTRNN sinusoidal oscillator, See examples folder:: 
+The following code creates a 2-neuron CTRNN sinusoidal oscillator, See demo folder:: 
 
         # imports
         import numpy as np
@@ -95,4 +95,4 @@ The following code creates a 2-neuron CTRNN sinusoidal oscillator, See examples 
 
 Output
 
-.. image:: https://raw.githubusercontent.com/madvn/CTRNN/master/example/osc.png
+.. image:: https://raw.githubusercontent.com/madvn/CTRNN/master/demo/osc.png
