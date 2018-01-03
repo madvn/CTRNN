@@ -1,128 +1,179 @@
+import numpy as np
 from CTRNN import CTRNN
 
-print("************************************** Basic test of CTRNN.py **************************************")
-results = []
+test_net_size = 3
 
-print("Initing network of size 3...")
-size = 3
-ns = CTRNN(size)
-print("Done!")
-
-print("\n\n**Testing taus and biases")
-print("Before",ns.taus,ns.biases)
-try:
-    ns.taus = np.random.rand(size)
-    results.append(True)
-except:
-    results.append(False)
-    pass
-try:
-    ns.biases = np.random.rand(size)
-    results.append(True)
-except:
-    results.append(False)
-    pass
-print("After",ns.taus,ns.biases)
-
-try:
-    ns.taus = np.random.rand(size-1)
-    results.append(False)
-except Exception as e:
-    print("Raised exception for ns.taus = np.random.rand(size-1)")
+def show_exception(message,e):
+    print(message)
     print(e)
-    results.append(True)
 
-try:
-    ns.biases = np.random.rand(size-1)
-    results.append(False)
-except Exception as e:
-    print("Raised exception for ns.biases = np.random.rand(size-1)")
-    print(e)
-    results.append(True)
+def test_initialization():
+    '''
+    Inits a CTRNN and returns True if succesful
+    '''
+    try:
+        print("Initing network of size 3...")
+        test_net_size = 3
+        ns = CTRNN(test_net_size)
+        print("Done!")
+        return True
+    except Exception as e:
+        show_exception("Raised exception with ns = CTRNN(test_net_size)",e)
+        return False
 
-print("\n\n**Testing weights")
-#ns.weights = np.random.rand([size,size])
-print("Before ",ns.weights[1,2],type(ns.weights))
-try:
-    ns.weights[1,2] = 3.45
-    results.append(True)
-except:
-    results.append(False)
-    pass
-print("After ",ns.weights[1,2],type(ns.weights))
-try:
-    ns.weights[1,3] = 3.45
-    results.append(False)
-except Exception as e:
-    print("Raised exception for ns.weights[1,3] = 3.45")
-    print(e)
-    results.append(True)
+def test_modification():
+    '''
+    Tests different kinds of modification and returns any(results)
+    '''
+    results = []
+    # init first
+    test_net_size = 3
+    ns = CTRNN(test_net_size)
 
-print("\n\n**Testing states")
-print("Before ",ns.states,ns.outputs)
-try:
-    ns.states = np.ones(size)*0.5
-    results.append(True)
-except:
-    results.append(False)
-    pass
-print("After ",ns.states,ns.outputs)
-try:
-    ns.states = [5,3]
-    results.append(False)
-except Exception as e:
-    print("Raised exception with ns.states = [5,3]")
-    print(e)
-    results.append(True)
+    print("**Testing taus and biases")
+    print("Before",ns.taus,ns.biases)
+    try:
+        ns.taus = np.random.rand(test_net_size)
+        results.append(True)
+    except Exception as e:
+        show_exception("Raised exception with ns.taus = np.random.rand(test_net_size)",e)
+        results.append(False)
+        pass
+    try:
+        ns.biases = np.random.rand(test_net_size)
+        results.append(True)
+    except Exception as e:
+        show_exception("Raised exception with ns.biases = np.random.rand(test_net_size)",e)
+        results.append(False)
+        pass
+    print("After",ns.taus,ns.biases)
 
-print("Before ",ns.states,ns.outputs)
-try:
-    ns.randomize_states(0.5,0.6)
-    results.append(True)
-except:
-    results.append(False)
-    pass
-print("After ",ns.states,ns.outputs)
+    try:
+        ns.taus = np.random.rand(test_net_size-1)
+        results.append(False)
+    except Exception as e:
+        show_exception("Raised exception for ns.taus = np.random.rand(test_net_size-1)",e)
+        results.append(True)
 
-print("\n\n**Testing outputs")
-print("Before ",ns.states,ns.outputs)
-try:
-    ns.outputs = np.ones(size)*0.5
-    results.append(True)
-except:
-    results.append(False)
-    pass
-print("After ",ns.states,ns.outputs)
-try:
-    ns.outputs = [5,3]
-    results.append(False)
-except Exception as e:
-    print("Raised exception with ns.outputs = [5,3]")
-    print(e)
-    results.append(True)
+    try:
+        ns.biases = np.random.rand(test_net_size-1)
+        results.append(False)
+    except Exception as e:
+        show_exception("Raised exception for ns.biases = np.random.rand(test_net_size-1)",e)
+        results.append(True)
 
-print("Before ",ns.states,ns.outputs)
-try:
-    ns.randomize_outputs(0.5,0.6)
-    results.append(True)
-except:
-    results.append(False)
-    pass
-print("After ",ns.states,ns.outputs)
+    print("**Testing weights")
+    #ns.weights = np.random.rand([test_net_size,test_net_size])
+    print("Before ",ns.weights[1,2],type(ns.weights))
+    try:
+        ns.weights[test_net_size-1,test_net_size-1] = 3.45
+        results.append(True)
+    except Exception as e:
+        show_exception("Raised exception with ns.weights[test_net_size-1,test_net_size-1] = 3.45",e)
+        results.append(False)
+        pass
+    print("After ",ns.weights[1,2],type(ns.weights))
+    try:
+        ns.weights[test_net_size+1,test_net_size-1] = 3.45
+        results.append(False)
+    except Exception as e:
+        show_exception("Raised exception for ns.weights[test_net_size+1,test_net_size-1] = 3.45",e)
+        results.append(True)
 
-print("\n\n**Stepping network for 50 time steps")
-print("Before ",ns.states,ns.outputs)
-try:
-    for _ in range(50):
-        ns.euler_step(np.random.rand(size))
-    results.append(True)
-except:
-    results.append(False)
+    print("**Testing states")
+    print("Before ",ns.states,ns.outputs)
+    try:
+        ns.states = np.ones(test_net_size)*0.5
+        results.append(True)
+    except Exception as e:
+        show_exception("Raised exception with ns.states = np.ones(test_net_size)*0.5",e)
+        results.append(False)
+        pass
+    print("After ",ns.states,ns.outputs)
+    try:
+        ns.states = np.random.rand(test_net_size-1)
+        results.append(False)
+    except Exception as e:
+        show_exception("Raised exception with ns.states = np.random.rand(test_net_size-1)",e)
+        results.append(True)
 
-print("After ",ns.states,ns.outputs)
+    print("Before ",ns.states,ns.outputs)
+    try:
+        ns.randomize_states(0.5,0.6)
+        results.append(True)
+    except Exception as e:
+        show_exception("Raised exception with ns.randomize_states(0.5,0.6)",e)
+        results.append(False)
+        pass
+    print("After ",ns.states,ns.outputs)
 
-print("\n\nTest can be considered passed if 5 exceptions were raised and there were no Nans or other errors")
-if any(results) == False: print("Test result: FAIL")
-else: print("Test result: PASS")
-print("Contact madcanda@indiana.edu if test fails or other bugs are discovered")
-print("************************************** End of test! **************************************")
+    print("**Testing outputs")
+    print("Before ",ns.states,ns.outputs)
+    try:
+        ns.outputs = np.ones(test_net_size)*0.5
+        results.append(True)
+    except Exception as e:
+        show_exception("Raised exception with ns.outputs = np.ones(test_net_size)*0.5",e)
+        results.append(False)
+        pass
+    print("After ",ns.states,ns.outputs)
+    try:
+        ns.outputs = np.random.rand(test_net_size-1)
+        results.append(False)
+    except Exception as e:
+        show_exception("Raised exception with ns.outputs = np.random.rand(test_net_size-1)",e)
+        results.append(True)
+
+    print("Before ",ns.states,ns.outputs)
+    try:
+        ns.randomize_outputs(0.5,0.6)
+        results.append(True)
+    except Exception as e:
+        show_exception("Raised exception with ns.randomize_outputs(0.5,0.6)",e)
+        results.append(False)
+        pass
+    print("After ",ns.states,ns.outputs)
+
+    return any(results)
+
+def test_simulation():
+    '''
+    Euler steps a CTRNN and returns True if no exceptions were raised
+    '''
+    ns = CTRNN(test_net_size)
+    print("**Stepping network for 50 time steps")
+    print("Before ",ns.states,ns.outputs)
+    try:
+        for _ in range(50):
+            ns.euler_step(np.random.rand(test_net_size))
+        result = True
+    except Exception as e:
+        show_exception("Simulation error:",e)
+        result = False
+
+    print("After ",ns.states,ns.outputs,result)
+    return result
+
+def run_basic_test():
+    '''
+    Main test function - runs each sub-test
+    '''
+    print("************************************** Basic test of CTRNN.py **************************************")
+    print("Contact madcanda@indiana.edu if test fails or other bugs are discovered")
+
+    print("\n## Testing Initialization")
+    assert test_initialization(),"CTRNN Initialization Test Failed"
+    print("**Initialization Test Passed**")
+
+    print("\n## Testing Modification")
+    assert test_modification(),"CTRNN Modification Test Failed"
+    print("**CTRNN Modification Test Passed**")
+
+    print("\n## Testing Simulation")
+    assert test_simulation(),"CTRNN Simulation Test Failed"
+    print("**CTRNN Simulation Test Passed**")
+
+    print("\nALL TESTS PASSED!!")
+
+if __name__ == "__main__":
+    run_basic_test()
