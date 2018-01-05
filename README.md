@@ -11,34 +11,34 @@ Installation instructions
 
 Usage
 -----
-##### Creating a CTRNN object: 
+#### Creating a CTRNN object: 
         cns = CTRNN(network_size) 
   weights are initialized randomly; gains, time-constants and biases are set to 1
-##### Setting gain for neuron i: 
+#### Setting gain for neuron i: 
         cns.gains[i] = 1 
   where i is in range [0,network_size)
-###### Setting gain for all neurons: 
+#### Setting gain for all neurons: 
         cns.gains = [1,2,3,..] 
   with list of size=network_size
-##### Setting biases and time-constants (taus) are similar gains
+#### Setting biases and time-constants (taus) are similar gains
         cns.biases
         cns.taus
-##### Setting weights to neuron i from neuron j: 
+#### Setting weights to neuron i from neuron j: 
         cns.weights[i,j] = 3 
   where i,j in range [0,network_size)
-##### Setting weights as a matrix: 
+#### Setting weights as a matrix: 
         cns.weights = csr_matrix(weights_matrix) 
   where weights_matrix is of size=network_sizeXnetwork_size
-##### Euler stepping the network:
+#### Euler stepping the network:
         cns.euler_step(external_inputs)
   where external_inputs is a list of size=network_size
-##### Accessing/Setting output of neuron i:
+#### Accessing/Setting output of neuron i:
         print(cns.outputs[i]) 
         cns.outputs[i] = 0.5 
   where i in range [0,network_size) and output in range [0,1]
-##### Same as above for states
+#### Same as above for states
         cns.states
-##### Randomizing states/outputs
+#### Randomizing states/outputs
         cns.randomize_states(ub,lb) 
   upper bound and lower bound in range [-inf,inf]
         cns.randomize_outputs(ub,lb) 
