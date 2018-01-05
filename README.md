@@ -15,7 +15,7 @@ Using the package
 #### Importing the CTRNN package: 
         from CTRNN import CTRNN
 #### Creating a CTRNN object: 
-        cns = CTRNN(network_size) 
+        cns = CTRNN(network_size,integration_step_size=0.1) 
   weights are initialized randomly; gains, time-constants and biases are set to 1
 #### Setting gain for neuron i: 
         cns.gains[i] = 1 
