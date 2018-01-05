@@ -9,8 +9,10 @@ Installation instructions
         $ pip install CTRNN
 
 
-Usage
------
+Using the package
+------------------
+#### Importing the CTRNN package: 
+        from CTRNN import CTRNN
 #### Creating a CTRNN object: 
         cns = CTRNN(network_size) 
   weights are initialized randomly; gains, time-constants and biases are set to 1
