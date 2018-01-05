@@ -9,47 +9,36 @@ Installation instructions
         $ pip install CTRNN
 
 
-
 Usage
 -----
-
-The CTRNN class has the following functions::
-
-         |  __init__(self, size=2, step_size=0.1)
-         |      Constructer that initializes a random network
-         |      with unit time-constants and biases
-         |      args = size:integer = network size
-         |             step_size:float = euler integration step size
-         |
-         |  euler_step(self, external_inputs)
-         |      Euler stepping the network by self.step_size with provided inputs
-         |      args = external_inputs:array[size,] = one float input per neuron
-         |
-         |  inverse_sigmoid(self, o)
-         |      Computes the inverse of the sigmoid function
-         |      args = o:array of any size
-         |      returns = inverse_sigmoid(o):array same size as o
-         |
-         |  randomize_outputs(self, lb, ub)
-         |      Randomize outputs in range [lb,ub]
-         |      args = lb:float = lower bound for random range
-         |              ub:float = upper bound for random range
-         |
-         |  randomize_states(self, lb, ub)
-         |      Randomize states in range [lb,ub]
-         |      args = lb:float = lower bound for random range
-         |              ub:float = upper bound for random range
-         |
-         |  sigmoid(self, s)
-         |      Computes the sigmoid function on input array
-         |      args = s:array of any Size
-         |      output = sigmoid(s):array of same size as input
-
-Notes
--------
-- Weights are implemented as a scipy.sparse.csr_matrix
-- Notation for weights are CTRNN.weights[to,from] 
-- When creating a CTRNN object, weights are randomly initialized and gains, biases and time-constants are all set to 1
+* Creating a CTRNN object: 
+        cns = CTRNN(network_size) 
+        weights are initialized randomly; gains, time-constants and biases are set to 1
+* Setting gain for neuron i: 
+        cns.gains[i] = 1 
+        where i is in range [0,network_size)
+* Setting gain for all neurons: 
+        cns.gains = [1,2,3,..] 
+        with list of size=network_size
+* Setting biases and time-constants (taus) are similar gains
+        cns.biases and cns.taus
+* Setting weights to neuron i from neuron j: 
+        cns.weights[i,j] = 3 
+        where i,j in range [0,network_size)
+* Setting weights as a matrix: 
+        cns.weights = csr_matrix(weights_matrix) 
+        where weights_matrix is of size=network_sizeXnetwork_size
+* Euler stepping the network:
+        cns.euler_step(external_inputs)
+        where external_inputs is a list of size=network_size
+* Accessing/Setting output of neuron i:
+        print(cns.outputs[i]) # where i in range [0,network_size)
+        cns.outputs[i] = 0.5 # where i in range [0,network_size) and output in range [0,1]
+* Same as above for states
+        cns.states
+* Randomizing states/outputs
+        cns.randomize_states(ub,lb) # upper bound and lower bound in range [-inf,inf]
+        cns.randomize_outputs(ub,lb) # upper bound and lower bound in [0,1]
 
 Example
 -------
