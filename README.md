@@ -8,7 +8,8 @@ Installation instructions
 -------------------------
         $ pip install CTRNN
 
-
+  Requirements: numpy, scipy
+  
 Using the package
 ------------------
 #### Importing the CTRNN package: 
@@ -29,6 +30,7 @@ Using the package
         cns.weights[i,j] = 3 
   where i,j in range [0,network_size)
 #### Setting weights as a matrix: 
+        from scipy.sparse import csr_matrix
         cns.weights = csr_matrix(weights_matrix) 
   where weights_matrix is of size=network_sizeXnetwork_size
 #### Euler stepping the network:
