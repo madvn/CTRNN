@@ -22,7 +22,7 @@ Using the package
 #### Setting gain for all neurons: 
         cns.gains = [1,2,3,..] 
   with list of size=network_size
-#### Setting biases and time-constants (taus) are similar gains
+#### Setting biases and time-constants (taus) is similar
         cns.biases
         cns.taus
 #### Setting weights to neuron i from neuron j: 
@@ -36,13 +36,18 @@ Using the package
   where external_inputs is a list of size=network_size
 #### Accessing/Setting output of neuron i:
         print(cns.outputs[i]) 
-        cns.outputs[i] = 0.5 
+        cns.outputs[i] = 0.5
   where i in range [0,network_size) and output in range [0,1]
+#### Accessing/Setting output of all neurons:
+        print(cns.outputs)
+        cns.outputs = [0.5,0.75,0.4]
+  where list is of size=network_size
 #### Same as above for states
         cns.states
+  where state values can range in (-inf,inf)
 #### Randomizing states/outputs
         cns.randomize_states(ub,lb) 
-  upper bound and lower bound in range [-inf,inf]
+  upper bound and lower bound in range (-inf,inf)
         cns.randomize_outputs(ub,lb) 
   upper bound and lower bound in [0,1]
 
