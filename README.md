@@ -50,6 +50,7 @@ Using the package
 #### Randomizing states/outputs
         cns.randomize_states(ub,lb) 
   upper bound and lower bound in range (-inf,inf)
+  
         cns.randomize_outputs(ub,lb) 
   upper bound and lower bound in [0,1]
 
