@@ -4,6 +4,10 @@ Python package that implements Continuous Time Recurrent Neural Networks (CTRNNs
 
 See Beer, R.D. (1995). On the dynamics of small continuous-time recurrent neural networks. Adaptive Behavior 3:469-509. for a study of CTRNNs. 
 
+Using this repo in conjunction with [StochSearch](https://github.com/madvn/stochsearch) allows you to optimize CTRNNs to perform different tasks. 
+
+You can also find a Tensorflow version of building and implementing a population of CTRNNs [here](https://github.com/madvn/TFSearch/blob/master/examples/CTRNN_oscillator/CTRNN.py). Refer to same repo for optimizing CTRNNs using Tensorflow on a GPU.
+
 Installation instructions
 -------------------------
         $ pip install CTRNN
