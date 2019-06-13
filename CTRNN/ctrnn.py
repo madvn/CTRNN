@@ -19,7 +19,8 @@ class CTRNN:
         self.weights = csr_matrix(np.random.rand(size,size))
         self.states = np.random.rand(size)
         self.outputs = self.sigmoid(self.states)
-        @property
+        
+    @property
     def taus(self): return self.__taus
 
     @property
