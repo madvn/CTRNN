@@ -19,7 +19,7 @@ class CTRNN:
         self.weights = csr_matrix(np.random.rand(size,size))
         self.states = np.random.rand(size)
         self.outputs = self.sigmoid(self.states)
-        
+
     @property
     def taus(self): return self.__taus
 
@@ -86,7 +86,7 @@ class CTRNN:
             raise Exception("Size mismatch - len(outputs) != network_size")
         self.__outputs = np.asarray(o)
         self.__states = self.inverse_sigmoid(o)/self.gains - self.biases
-        
+
     def randomize_states(self,lb,ub):
         '''
         Randomize states in range [lb,ub]
@@ -112,7 +112,7 @@ class CTRNN:
             raise Exception("Size mismatch - len(external_inputs) != network_size")
         external_inputs = np.asarray(external_inputs)
         total_inputs = external_inputs + self.weights.dot(self.outputs)
-        self.states += self.step_size*self.taus* (total_inputs - self.states)
+        self.states += self.step_size*(1/self.taus)* (total_inputs - self.states)
         self.outputs = self.sigmoid(self.gains*(self.states+self.biases))
 
     def sigmoid(self,s):
