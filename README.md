@@ -13,7 +13,19 @@ Installation instructions
         $ pip install CTRNN
 
   Requirements: numpy, scipy
-  
+
+Citing
+------------------
+        @misc{Candadai2020,
+          author = {Candadai, Madhavun},
+          title = {CTRNN},
+          year = {2020},
+          publisher = {GitHub},
+          journal = {GitHub repository},
+          howpublished = {\url{https://github.com/madvn/CTRNN/}},
+          commit = {91cbf247a5395931e837ca0664c944d809a3acd3}
+        }
+        
 Using the package
 ------------------
 #### Importing the CTRNN package: 
