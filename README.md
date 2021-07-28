@@ -16,14 +16,12 @@ Installation instructions
 
 Citing
 ------------------
-        @misc{Candadai2020,
-          author = {Candadai, Madhavun},
-          title = {CTRNN},
-          year = {2020},
-          publisher = {GitHub},
-          journal = {GitHub repository},
-          howpublished = {\url{https://github.com/madvn/CTRNN/}},
-          commit = {91cbf247a5395931e837ca0664c944d809a3acd3}
+        @misc{Candadai_CTRNN_2020,
+        author = {Candadai, Madhavun},
+        month = {3},
+        title = {CTRNN},
+        url = {https://github.com/madvn/CTRNN},
+        year = {2020}
         }
         
 Using the package
